@@ -398,56 +398,57 @@ var pizzaElementGenerator = function(i) {
   return pizzaContainer;
 };
 
+//Helper function to create an array of elements
+function getDomNodeArray(selector) {
+  // get the elements as a DOM collection
+  var elemCollection = document.querySelectorAll(selector);
+  // coerce the DOM collection into an array
+  var elemArray = Array.prototype.slice.apply(elemCollection);
+  return elemArray;
+};
+
 // resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
 var resizePizzas = function(size) {
   window.performance.mark("mark_start_resize");   // User Timing API function
 
   // Changes the value for the size of the pizza above the slider
-  //Refactor: Create var to avoid code repetition
-  function changeSliderLabel(size) {
-    var pizzaSizeLabel = document.querySelector("#pizzaSize").innerHTML;
-    switch(size) {
-      case "1":
-        pizzaSizeLabel = "Small";
-        return;
-      case "2":
-        pizzaSizeLabel = "Medium";
-        return;
-      case "3":
-        pizzaSizeLabel = "Large";
-        return;
-      default:
-        console.log("bug in changeSliderLabel");
-    }
+  // Refactor: Create var pizzaSizeLabel to avoid code repetition
+  //           Remove unneeded inner function
+  var pizzaSizeLabel = document.querySelector("#pizzaSize");
+  switch(size) {
+    case "1":
+      pizzaSizeLabel.innerHTML = "Small";
+      break;
+    case "2":
+      pizzaSizeLabel.innerHTML = "Medium";
+      break;
+    case "3":
+      pizzaSizeLabel.innerHTML = "Large";
+      break;
+    default:
+      console.log("bug in changeSliderLabel");
   }
-
-  changeSliderLabel(size);
 
   // Iterates through pizza elements on the page and changes their widths
   // Refactor: Create var pizzaContainers to reduce the number of queries
   //           Faster way to compute new pizza size.
-  function changePizzaSizes(size) {
-    var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
-    var newWidth = 0;
-      switch(size) {
-        case "1":
-          newWidth = 0.25 * windowWidth;
-          break;
-        case "2":
-          newWidth = 0.3333 * windowWidth;
-          break;
-        case "3":
-          newWidth = 0.5 * windowWidth;
-          break;
-        default:
-          console.log("bug in sizeSwitcher");
-      }
-
-    var pizzaContainers = document.querySelectorAll(".randomPizzaContainer");
-    for (var i = 0; i < pizzaContainers.length; i++) {
-      pizzaContainers[i].style.width = newWidth + 'px';
-    }
+  //           Remove unneeded inner function
+  var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
+  var newWidth = 0;
+  switch(size) {
+    case "1":
+      newWidth = 0.25 * windowWidth;
+      break;
+    case "2":
+      newWidth = 0.3333 * windowWidth;
+      break;
+    case "3":
+      newWidth = 0.5 * windowWidth;
+      break;
+    default:
+      console.log("bug in sizeSwitcher");
   }
+  getDomNodeArray(".randomPizzaContainer").forEach(function(p){p.style.width = newWidth + 'px'});
 
   changePizzaSizes(size);
 
@@ -496,8 +497,9 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
+  var phaseBase = document.body.scrollTop / 1250;
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    var phase = Math.sin(phaseBase + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
