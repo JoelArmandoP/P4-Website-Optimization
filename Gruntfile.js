@@ -9,6 +9,11 @@ module.exports = function(grunt) {
 		files: [{
 		    expand: true,
 		    src: ['**/*.html'],
+		    cwd: 'views/',
+		    dest: 'dist/views/'
+		}, {
+		    expand: true,
+		    src: ['*.html'],
 		    cwd: './',
 		    dest: 'dist/'
 		}]
