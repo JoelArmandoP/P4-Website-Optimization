@@ -493,7 +493,7 @@ function updatePositions() {
 
   var phaseBase = document.body.scrollTop / 1250;
   var phases = [];
-  for (var i = 0; i < 4; i++) {
+  for (var i = 0; i < 5; i++) {
     phases[i] = 100 * Math.sin(phaseBase + i);
   }
 
