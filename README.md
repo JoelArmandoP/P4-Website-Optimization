@@ -21,5 +21,5 @@ General optimisations:
 - Reduce numbers of background pizzas to those that are needed.
 - Forced background pizzas into separated layout.
 
-### Check commit history for details
+### Please check commit history for details
 
