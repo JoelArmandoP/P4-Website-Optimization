@@ -3,7 +3,8 @@
 ## Steps to run the application
 
 Just open dist/index.html. All generated grunt files are included in the repo.
-I included the all the files in the repo because I was required to in a previous assignment.
+I included all the files in the repo because I was required to in a previous assignment.
+Node_modules were not included.
 
 ##General optimisations
 
