@@ -559,20 +559,21 @@ var resizePizzas = function(size) {
   // Changes the value for the size of the pizza above the slider
   // Refactor: Create var pizzaSizeLabel to avoid code repetition
   //           Remove unneeded inner function
-  var pizzaSizeLabel = document.querySelector("#pizzaSize");
+  var pizzaSizeLabel = "No Such Pizza";
   switch(size) {
     case "1":
-      pizzaSizeLabel.innerHTML = "Small";
+      pizzaSizeLabel = "Small";
       break;
     case "2":
-      pizzaSizeLabel.innerHTML = "Medium";
+      pizzaSizeLabel = "Medium";
       break;
     case "3":
-      pizzaSizeLabel.innerHTML = "Large";
+      pizzaSizeLabel = "Large";
       break;
     default:
       console.log("bug in changeSliderLabel");
   }
+  document.querySelector("#pizzaSize").innerHTML = pizzaSizeLabel;
 
   // Iterates through pizza elements on the page and changes their widths
   // Refactor: Create var pizzaContainers to reduce the number of queries
