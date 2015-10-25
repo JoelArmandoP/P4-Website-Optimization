@@ -50,7 +50,7 @@
     </div>
     <div id="callToAction" class="row">
       <div class="col-md-4">
-        <img src="images/pizzeria.png" class="img-responsive"> <!-- Image credit to: http://commons.wikimedia.org/wiki/File:HK_TST_night_%E5%98%89%E8%98%AD%E9%81%93_Granville_Road_restaurant_Paisano's_Pizzeria_pizza_Dec-2013.JPG -->
+        <img src="images/pizzeria.png" class="img-responsive" alt="pizzeria"> <!-- Image credit to: http://commons.wikimedia.org/wiki/File:HK_TST_night_%E5%98%89%E8%98%AD%E9%81%93_Granville_Road_restaurant_Paisano's_Pizzeria_pizza_Dec-2013.JPG -->
       </div>
       <div class="col-md-8">
         <div class="row">
@@ -118,7 +118,7 @@
         <div id="randomPizzas" class="row">
           <div id="pizza0" class="randomPizzaContainer" style="width:33.33%;">
             <div class="col-md-6">
-              <img src="images/pizza.png" class="img-responsive">
+              <img src="images/pizza.png" class="img-responsive" alt="pizza">
             </div>
             <div class="col-md-6">
               <h4>The Udacity Special</h4>
@@ -135,7 +135,7 @@
           </div>
           <div id="pizza1" class="randomPizzaContainer" style="width:33.33%;">
             <div class="col-md-6">
-              <img src="images/pizza.png" class="img-responsive">
+              <img src="images/pizza.png" class="img-responsive" alt="pizza">
             </div>
             <div class="col-md-6">
               <h4>The Cameron Special</h4>
@@ -171,8 +171,8 @@ cameron *at* udacity *dot* com
 */
 
 // As you may have realized, this website randomly generates pizzas.
-// Here are arrays of all possible pizza ingredients.
 'use strict';
+// Here are arrays of all possible pizza ingredients.
 var pizzaIngredients = {};
 pizzaIngredients.meats = [
   'Pepperoni',
@@ -636,8 +636,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
   console.log('Average time to generate last 10 frames: ' + sum / 10 + 'ms');
 }
 
-// The following code for sliding background pizzas was pulled from Ilya's demo found at:
-// https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
+//A global variable to store the moving pizzas
 
 var rovingPizzas = [];
 
@@ -692,6 +691,7 @@ function createPizzas() {
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', createPizzas);
+// Generates the sliding pizzas when the page is resized.
 window.addEventListener('resize', createPizzas);
 
 </script>
