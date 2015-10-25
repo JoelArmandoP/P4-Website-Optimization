@@ -398,15 +398,6 @@ var pizzaElementGenerator = function(i) {
   return pizzaContainer;
 };
 
-//Helper function to create an array of elements
-function getDomNodeArray(selector) {
-  // get the elements as a DOM collection
-  var elemCollection = document.querySelectorAll(selector);
-  // coerce the DOM collection into an array
-  var elemArray = Array.prototype.slice.apply(elemCollection);
-  return elemArray;
-};
-
 // resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
 var resizePizzas = function(size) {
   window.performance.mark("mark_start_resize");   // User Timing API function
@@ -448,7 +439,10 @@ var resizePizzas = function(size) {
     default:
       console.log("bug in sizeSwitcher");
   }
-  getDomNodeArray(".randomPizzaContainer").forEach(function(p){p.style.width = newWidth + 'px'});
+  var pizzaContainers = document.querySelectorAll(".randomPizzaContainer");
+  for(i = 0; i < pizzaContainers.length; i++) {
+    pizzaContainers[i].style.width = newWidth + 'px'
+  };
 
   // User Timing API is awesome
   window.performance.mark("mark_end_resize");

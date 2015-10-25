@@ -602,7 +602,10 @@ var resizePizzas = function(size) {
     default:
       console.log("bug in sizeSwitcher");
   }
-  getDomNodeArray(".randomPizzaContainer").forEach(function(p){p.style.width = newWidth + 'px'});
+  var pizzaContainers = document.querySelectorAll(".randomPizzaContainer");
+  for(i = 0; i < pizzaContainers.length; i++) {
+    pizzaContainers[i].style.width = newWidth + 'px'
+  };
 
   // User Timing API is awesome
   window.performance.mark("mark_end_resize");
