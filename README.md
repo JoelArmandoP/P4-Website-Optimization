@@ -6,9 +6,8 @@ Just open this/index.html. All generated grunt files are included in the repo.
 I included the all the files in the repo because I was required to in a previous assignment.
 Same with the node_modules directory.
 
-##General otimisations
+##General optimisations
 
-General optimisations:
 - Inline CSS and js files
 - Uglify js files
 - Minimise images
